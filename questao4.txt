@@ -1,0 +1,21 @@
+object TorresDeHanoi {
+  def moverDisco(disco: Int, origem: Char, destino: Char): Unit = {
+    println(s"Mover disco $disco de $origem para $destino")
+    println()
+  }
+
+  def torre(discos: Int, origem: Char, auxiliar: Char, destino: Char): Unit = {
+    if (discos == 1) {
+      moverDisco(1, origem, destino)
+    } else {
+      torre(discos - 1, origem, destino, auxiliar)
+      moverDisco(discos, origem, destino)
+      torre(discos - 1, auxiliar, origem, destino)
+    }
+  }
+
+  def main(args: Array[String]): Unit = {
+    val numDiscos = 3
+    torre(numDiscos, 'A', 'B', 'C')
+  }
+}
